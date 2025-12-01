@@ -1,0 +1,11 @@
+{
+    "name": "JobsSite",
+    "alias": "jobssite",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\JobsSite\\Providers\\JobsSiteServiceProvider"
+    ],
+    "files": []
+}

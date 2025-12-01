@@ -1,0 +1,11 @@
+{
+    "name": "AdminSite",
+    "alias": "adminsite",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\AdminSite\\Providers\\AdminSiteServiceProvider"
+    ],
+    "files": []
+}
