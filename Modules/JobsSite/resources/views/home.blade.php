@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('jobssite::components.layouts.master')
 
 @section('content')
 <div class="container">

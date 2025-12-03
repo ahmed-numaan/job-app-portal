@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    protected string $moduleNamespace = 'Modules\\JobsSite\\Http\\Controllers';
     protected string $name = 'JobsSite';
 
     /**
@@ -26,6 +27,13 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
         $this->mapWebRoutes();
+        // Route::middleware('web')
+        //     ->namespace($this->moduleNamespace)
+        //     ->group(module_path('JobsSite', 'Routes/auth.php'));
+
+        // Route::middleware('web')
+        //     ->namespace($this->moduleNamespace)
+        //     ->group(module_path('JobsSite', 'Routes/web.php'));
     }
 
     /**

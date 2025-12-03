@@ -6,3 +6,10 @@ use Modules\AdminSite\Http\Controllers\AdminSiteController;
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('adminsites', AdminSiteController::class)->names('adminsite');
 });
+
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('adminsite::dashboard');
+    });
+});

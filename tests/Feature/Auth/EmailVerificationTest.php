@@ -55,4 +55,9 @@ class EmailVerificationTest extends TestCase
 
         $this->assertFalse($user->fresh()->hasVerifiedEmail());
     }
+
+    public function show()
+    {
+        return view('jobssite::auth.verify');
+    }
 }

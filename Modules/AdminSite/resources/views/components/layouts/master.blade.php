@@ -14,17 +14,45 @@
         <meta name="author" content="{{ $author ?? '' }}">
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <!-- <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" /> -->
 
-        {{-- Vite CSS --}}
-        {{-- {{ module_vite('build-adminsite', 'resources/assets/sass/app.scss') }} --}}
+        @vite([
+            'Modules/AdminSite/Resources/assets/css/admin.css',
+            'Modules/AdminSite/Resources/assets/js/admin.js'
+        ])
     </head>
 
-    <body>
-        {{ $slot }}
+    
+<!-- <body class="hold-transition layout-fixed sidebar-expand-lg sidebar-mini bg-body-tertiary"> -->
+<body class="layout-fixed sidebar-expand-lg sidebar-open bg-body-tertiary">
+    <div class="app-wrapper">
 
-        {{-- Vite JS --}}
-        {{-- {{ module_vite('build-adminsite', 'resources/assets/js/app.js') }} --}}
-    </body>
+        @include('adminsite::components.layouts.navbar')
+        @include('adminsite::components.layouts.sidebar')
+
+        <main class="app-main">
+            <div class="container-fluid">
+                @yield('content')
+            </div>
+        </main>
+
+        <!--begin::Footer-->
+        <footer class="app-footer">
+        <!--begin::To the end-->
+        <div class="float-end d-none d-sm-inline">Anything you want</div>
+        <!--end::To the end-->
+        <!--begin::Copyright-->
+        <strong>
+            Copyright &copy; 2014-2025&nbsp;
+            <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
+        </strong>
+        All rights reserved.
+        <!--end::Copyright-->
+        </footer>
+        <!--end::Footer-->
+
+    </div>
+
+</body>
 </html>
