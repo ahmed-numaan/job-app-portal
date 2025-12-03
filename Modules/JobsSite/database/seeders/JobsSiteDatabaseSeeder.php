@@ -11,6 +11,14 @@ class JobsSiteDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call([]);
+        $this->call([
+            UsersTableSeeder::class,
+            CompaniesTableSeeder::class,
+            VacanciesTableSeeder::class,
+            SkillsTableSeeder::class,
+            UserSkillTableSeeder::class,
+            VacancySkillTableSeeder::class,
+            ApplicationsTableSeeder::class,
+        ]);
     }
 }
