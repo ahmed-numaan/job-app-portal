@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Modules\AdminSite\Http\Controllers\AdminSiteController;
 use Modules\AdminSite\Http\Controllers\Auth\LoginController;
 use Modules\AdminSite\Http\Controllers\UserController;
+use Modules\AdminSite\Http\Controllers\CompanyController;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('adminsites', AdminSiteController::class)->names('adminsite');
@@ -25,6 +26,13 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/users/{id}', [UserController::class, 'show'])->name('admin.users.show');
     Route::put('/admin/users/{id}', [UserController::class, 'update'])->name('admin.users.update');
     Route::delete('/admin/users/{id}', [UserController::class, 'destroy'])->name('admin.users.delete');
+
+    Route::get('/admin/companies', [CompanyController::class, 'list'])->name('admin.companies.list');
+    Route::get('/admin/companies/data', [CompanyController::class, 'datatable'])->name('admin.companies.data');
+    Route::post('/admin/companies', [CompanyController::class, 'store'])->name('admin.companies.store');
+    Route::get('/admin/companies/{id}', [CompanyController::class, 'show'])->name('admin.companies.show');
+    Route::put('/admin/companies/{id}', [CompanyController::class, 'update'])->name('admin.companies.update');
+    Route::delete('/admin/companies/{id}', [CompanyController::class, 'destroy'])->name('admin.companies.destroy');
 
     Route::post('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
 });

@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()
-                ->constrained('users')->onDelete('set null');
-                // If employer account owns a company
             $table->string('name');
-            $table->text('description')->nullable();
             $table->string('website')->nullable();
+            $table->string('contact_person')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
             $table->string('logo')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

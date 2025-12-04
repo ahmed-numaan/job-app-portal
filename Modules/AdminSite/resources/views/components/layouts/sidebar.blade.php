@@ -40,7 +40,7 @@
             </a>
         </li>
         <li class="nav-item">
-        <a href="./generate/theme.html" class="nav-link">
+        <a href="{{route('admin.companies.list')}}" class="nav-link {{ request()->routeIs('admin.companies.list') ? 'active' : '' }}">
             <i class="nav-icon bi bi-palette"></i>
             <p>Companies</p>
         </a>

@@ -14,7 +14,10 @@ class CompaniesTableSeeder extends Seeder
         foreach (range(1, 5) as $i) {
             \DB::table('companies')->insert([
                 'name' => $faker->company,
+                'contact_person' => $faker->contact_person,
                 'description' => $faker->paragraph,
+                'email' => $faker->unique()->safeEmail,
+                'phone' => $faker->phoneNumber,
                 'website' => $faker->url,
                 'logo' => null,
                 'created_at' => now(),
