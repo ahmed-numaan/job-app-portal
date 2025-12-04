@@ -199,7 +199,12 @@
             <!--begin::Menu Footer-->
             <li class="user-footer">
                 <a href="#" class="btn btn-default btn-flat">Profile</a>
-                <a href="#" class="btn btn-default btn-flat float-end">Sign out</a>
+                <a href="#" class="btn btn-default btn-flat float-end" onClick="document.getElementById('frmAdminLogout').submit()">
+                    <form id="frmAdminLogout" method="POST" action="{{ route('admin.logout') }}">
+                        @csrf
+                        Sign out
+                    </form>
+                </a>
             </li>
             <!--end::Menu Footer-->
             </ul>

@@ -40,6 +40,8 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'role' => 'job_seeker',
                 'phone' => $faker->phoneNumber,
+                'created_at' => $faker->dateTimeBetween('-1 year', 'now'),
+                'updated_at' => $faker->dateTimeBetween('-1 year', 'now')
             ]);
         }
     }

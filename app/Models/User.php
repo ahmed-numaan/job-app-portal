@@ -45,4 +45,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return $value!='' ? date("Y-m-d H:i", strtotime($value)):$value;
+    }
+
+
 }
