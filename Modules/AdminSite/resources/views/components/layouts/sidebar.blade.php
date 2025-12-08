@@ -52,7 +52,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('admin.skills.list')}}" class="nav-link {{ request()->routeIs('admin.skills.list') ? 'active' : '' }}">
                 <i class="nav-icon bi bi-clipboard-fill"></i>
                 <p>Skills</p>
             </a>

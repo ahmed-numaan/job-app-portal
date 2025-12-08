@@ -5,6 +5,7 @@ use Modules\AdminSite\Http\Controllers\AdminSiteController;
 use Modules\AdminSite\Http\Controllers\Auth\LoginController;
 use Modules\AdminSite\Http\Controllers\UserController;
 use Modules\AdminSite\Http\Controllers\CompanyController;
+use Modules\AdminSite\Http\Controllers\SkillController;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('adminsites', AdminSiteController::class)->names('adminsite');
@@ -33,6 +34,13 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/companies/{id}', [CompanyController::class, 'show'])->name('admin.companies.show');
     Route::put('/admin/companies/{id}', [CompanyController::class, 'update'])->name('admin.companies.update');
     Route::delete('/admin/companies/{id}', [CompanyController::class, 'destroy'])->name('admin.companies.destroy');
+
+    Route::get('admin/skills', [SkillController::class, 'list'])->name('admin.skills.list');
+    Route::get('admin/skills/data', [SkillController::class, 'data'])->name('admin.skills.data');
+    Route::post('admin/skills', [SkillController::class, 'store'])->name('admin.skills.store');
+    Route::get('admin/skills/{id}', [SkillController::class, 'show'])->name('admin.skills.show');
+    Route::put('admin/skills/{id}', [SkillController::class, 'update'])->name('admin.skills.update');
+    Route::delete('admin/skills/{id}', [SkillController::class, 'destroy'])->name('admin.skills.delete');
 
     Route::post('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
 });

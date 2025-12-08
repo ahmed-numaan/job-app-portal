@@ -2,7 +2,7 @@
 namespace Modules\AdminSite\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Modules\AdminSite\Models\Company;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
