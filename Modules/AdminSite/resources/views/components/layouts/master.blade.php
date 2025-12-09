@@ -21,6 +21,9 @@
             'Modules/AdminSite/Resources/assets/css/admin.css',
             'Modules/AdminSite/Resources/assets/js/admin.js'
         ])
+
+        <link href="{{ asset('vendor/select2.min.css') }}" rel="stylesheet">
+        
     </head>
 
     

@@ -58,13 +58,13 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('admin.vacancies.list')}}" class="nav-link {{ request()->routeIs('admin.vacancies.list') ? 'active' : '' }}">
                 <i class="nav-icon bi bi-tree-fill"></i>
                 <p>Vacancies</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('admin.applications.list')}}" class="nav-link {{ request()->routeIs('admin.applications.list') ? 'active' : '' }}">
                 <i class="nav-icon bi bi-pencil-square"></i>
                 <p>Applications</p>
             </a>

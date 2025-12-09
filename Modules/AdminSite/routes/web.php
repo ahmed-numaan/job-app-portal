@@ -6,6 +6,7 @@ use Modules\AdminSite\Http\Controllers\Auth\LoginController;
 use Modules\AdminSite\Http\Controllers\UserController;
 use Modules\AdminSite\Http\Controllers\CompanyController;
 use Modules\AdminSite\Http\Controllers\SkillController;
+use Modules\AdminSite\Http\Controllers\VacancyController;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('adminsites', AdminSiteController::class)->names('adminsite');
@@ -41,6 +42,20 @@ Route::middleware('admin')->group(function () {
     Route::get('admin/skills/{id}', [SkillController::class, 'show'])->name('admin.skills.show');
     Route::put('admin/skills/{id}', [SkillController::class, 'update'])->name('admin.skills.update');
     Route::delete('admin/skills/{id}', [SkillController::class, 'destroy'])->name('admin.skills.delete');
+
+    Route::get('admin/vacancies', [VacancyController::class, 'list'])->name('admin.vacancies.list');
+    Route::get('admin/vacancies/data', [VacancyController::class, 'data'])->name('admin.vacancies.data');
+    Route::post('admin/vacancies', [VacancyController::class, 'store'])->name('admin.vacancies.store');
+    Route::get('admin/vacancies/{id}', [VacancyController::class, 'show'])->name('admin.vacancies.show');
+    Route::put('admin/vacancies/{id}', [VacancyController::class, 'update'])->name('admin.vacancies.update');
+    Route::delete('admin/vacancies/{id}', [VacancyController::class, 'destroy'])->name('admin.vacancies.delete');
+
+    Route::get('admin/applications', [ApplicationController::class, 'list'])->name('admin.applications.list');
+    Route::get('admin/applications/data', [ApplicationController::class, 'data'])->name('admin.applications.data');
+    Route::post('admin/applications', [ApplicationController::class, 'store'])->name('admin.applications.store');
+    Route::get('admin/applications/{id}', [ApplicationController::class, 'show'])->name('admin.applications.show');
+    Route::put('admin/applications/{id}', [ApplicationController::class, 'update'])->name('admin.applications.update');
+    Route::delete('admin/applications/{id}', [ApplicationController::class, 'destroy'])->name('admin.applications.delete');
 
     Route::post('/admin/logout', [LoginController::class, 'logout'])->name('admin.logout');
 });
