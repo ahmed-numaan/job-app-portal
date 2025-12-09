@@ -163,12 +163,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             } else {
                 formData.set(el.name, '');
-                alert(el.name);
-                if(el.name=='is_active'){
-                    formData.set(el.name, '0');
-                }else{
-                    formData.set(el.name, '');
-                }
             }
         });        
         formData.set('is_active',document.getElementById('isActive').checked ? '1' : '0');

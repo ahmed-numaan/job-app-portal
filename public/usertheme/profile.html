@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>User Profile - JobEntry</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .profile-photo-frame {
+            width: 150px;
+            height: 150px;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+        }
+        .profile-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .profile-photo-frame i {
+            font-size: 60px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid bg-white p-0">
+        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+            <a href="index.html" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+                <h1 class="m-0 text-primary">JobEntry</h1>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="index.html" class="nav-item nav-link">Home</a>
+                    <a href="profile.html" class="nav-item nav-link active">Profile</a>
+                    <a href="login.html" class="nav-item nav-link">Logout</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid py-5" style="background: linear-gradient(rgba(43, 57, 64, .05), rgba(43, 57, 64, .05));">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <div class="bg-white rounded p-4 shadow">
+                            <h5 class="mb-4 text-center">Profile Photo</h5>
+                            <div class="profile-photo-frame" id="photoFrame">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <input type="file" class="form-control mb-2" id="photoUpload" accept="image/*">
+                            <button class="btn btn-danger btn-sm w-100" id="deletePhoto">Delete Photo</button>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="bg-white rounded p-4 shadow mb-4">
+                            <h5 class="mb-4">Profile Information</h5>
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Full Name</label>
+                                        <input type="text" class="form-control" value="John Doe">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control" value="john@example.com">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Phone</label>
+                                        <input type="tel" class="form-control">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Location</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update Profile</button>
+                            </form>
+                        </div>
+
+                        <div class="bg-white rounded p-4 shadow mb-4">
+                            <h5 class="mb-4">Resume</h5>
+                            <div id="resumeSection">
+                                <p class="text-muted" id="noResume">No resume uploaded</p>
+                                <div id="resumeInfo" style="display:none;">
+                                    <p><i class="fas fa-file-pdf text-danger"></i> <span id="resumeName">resume.pdf</span></p>
+                                    <button class="btn btn-danger btn-sm" id="deleteResume">Delete Resume</button>
+                                </div>
+                            </div>
+                            <input type="file" class="form-control mt-3" id="resumeUpload" accept=".pdf,.doc,.docx">
+                            <button class="btn btn-primary mt-2" id="uploadResume">Upload Resume</button>
+                        </div>
+
+                        <div class="bg-white rounded p-4 shadow">
+                            <h5 class="mb-4">Cover Letter</h5>
+                            <textarea class="form-control" rows="8" placeholder="Write your cover letter here..."></textarea>
+                            <button class="btn btn-primary mt-3">Save Cover Letter</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <a class="border-bottom" href="#">JobEntry</a>, All Right Reserved.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Photo upload preview
+        document.getElementById('photoUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('photoFrame').innerHTML = '<img src="' + e.target.result + '">';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Delete photo
+        document.getElementById('deletePhoto').addEventListener('click', function() {
+            document.getElementById('photoFrame').innerHTML = '<i class="fas fa-user"></i>';
+            document.getElementById('photoUpload').value = '';
+        });
+
+        // Resume upload
+        document.getElementById('uploadResume').addEventListener('click', function() {
+            const file = document.getElementById('resumeUpload').files[0];
+            if (file) {
+                document.getElementById('noResume').style.display = 'none';
+                document.getElementById('resumeInfo').style.display = 'block';
+                document.getElementById('resumeName').textContent = file.name;
+            }
+        });
+
+        // Delete resume
+        document.getElementById('deleteResume').addEventListener('click', function() {
+            document.getElementById('noResume').style.display = 'block';
+            document.getElementById('resumeInfo').style.display = 'none';
+            document.getElementById('resumeUpload').value = '';
+        });
+    </script>
+</body>
+</html>
