@@ -7,7 +7,9 @@ use Modules\JobsSite\Http\Controllers\Auth\RegisterController;
 use Modules\JobsSite\Http\Controllers\Auth\ForgotPasswordController;
 use Modules\JobsSite\Http\Controllers\Auth\ResetPasswordController;
 use Modules\JobsSite\Http\Controllers\JobsSiteController;
+use Modules\JobsSite\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ProfileController;
+
 
 Route::middleware(['web'])->group(function () {
 
@@ -34,7 +36,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::group([], function () {
     Route::get('/', function () {
         return view('jobssite::welcome');
-    });
+    })->name('welcome');
 });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/404', [WelcomeController::class, 'page_not_found'])->name('page_not_found');
+Route::get('/about', [WelcomeController::class, 'about'])->name('about');
+Route::get('/jobslist', [WelcomeController::class, 'jobslist'])->name('jobslist');
+Route::get('/category', [WelcomeController::class, 'category'])->name('category');
+Route::get('/profile', [WelcomeController::class, 'profile'])->name('profile');
+Route::get('/search', [WelcomeController::class, 'search'])->name('search');
+Route::get('/testimonials', [WelcomeController::class, 'testimonials'])->name('testimonials');
+Route::get('/contact', [WelcomeController::class, 'contact'])->name('contact');
+Route::get('/applications', [WelcomeController::class, 'applications'])->name('applications');
+Route::get('/change_password', [WelcomeController::class, 'change_password'])->name('change_password');
