@@ -68,6 +68,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        event(new Registered($user)); // REQUIRED
     }
 
     public function showRegistrationForm()
