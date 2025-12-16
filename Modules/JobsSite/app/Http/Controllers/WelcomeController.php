@@ -57,6 +57,6 @@ class WelcomeController extends Controller
     }
     public function change_password()
     {
-        return view('jobssite::change_password');
+        return view('jobssite::auth.passwords.update');
     }
 }

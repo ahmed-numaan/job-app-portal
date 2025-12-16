@@ -7,8 +7,10 @@ use Modules\JobsSite\Http\Controllers\Auth\RegisterController;
 use Modules\JobsSite\Http\Controllers\Auth\ForgotPasswordController;
 use Modules\JobsSite\Http\Controllers\Auth\ResetPasswordController;
 use Modules\JobsSite\Http\Controllers\Auth\VerificationController;
+use Modules\JobsSite\Http\Controllers\Auth\ConfirmPasswordController;
 use Modules\JobsSite\Http\Controllers\JobsSiteController;
 use Modules\JobsSite\Http\Controllers\WelcomeController;
+use Modules\JobsSite\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\ProfileController;
 
 Route::middleware(['web'])->group(function () {
@@ -34,11 +36,27 @@ Route::middleware(['web'])->group(function () {
     Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
     Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
     Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+    Route::middleware('auth')->get('/user/password', function () {
+        return view('jobssite::auth.passwords.update');
+    });
+    
 
     // Email verification
     Route::get('email/verify', [VerificationController::class, 'show'])->name('verification.notice');
     Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
     Route::post('email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+    Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
+
+    // Show confirm password form
+    Route::get('confirm-password', [ConfirmPasswordController::class, 'showConfirmForm'])
+        ->middleware('auth')
+        ->name('password.confirm');
+
+    // Handle password confirmation
+    Route::post('confirm-password', [ConfirmPasswordController::class, 'confirm'])->middleware('auth');
+        
+    Route::put('/user/password', [PasswordController::class, 'update'])->name('password.update_user')->middleware('auth');
+
 });
 
 Route::get('/404', [WelcomeController::class, 'page_not_found'])->name('page_not_found');
