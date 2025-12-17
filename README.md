@@ -1,59 +1,207 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Job Application Portal
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A comprehensive job portal application built with Laravel 12, featuring separate modules for job seekers and administrators. This project demonstrates modern web development practices with a modular architecture, responsive design, and Docker containerization.
 
-## About Laravel
+## 🚀 Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Job Seekers Portal
+- **User Registration & Authentication** - Secure user accounts with profile management
+- **Job Search & Filtering** - Advanced search with location, salary, and skill filters
+- **Job Applications** - Apply to positions with resume upload and cover letters
+- **Application Tracking** - Monitor application status and history
+- **Profile Management** - Update personal information and change passwords
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Admin Panel
+- **Company Management** - Add and manage company profiles with logos and details
+- **Vacancy Management** - Create, edit, and manage job postings
+- **Application Review** - Review and process job applications
+- **Skills Management** - Maintain skill categories and requirements
+- **User Management** - Oversee user accounts and permissions
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Technical Features
+- **Modular Architecture** - Separate modules for JobsSite and AdminSite
+- **Responsive Design** - Mobile-friendly interface with Bootstrap 5
+- **Docker Support** - Complete containerized development environment
+- **Database Relations** - Proper Eloquent relationships between models
+- **Data Tables** - Interactive tables with sorting and pagination
+- **Email Integration** - MailHog for development email testing
 
-## Learning Laravel
+## 🛠️ Tech Stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Backend
+- **Laravel 12** - PHP framework with modern features
+- **PHP 8.2+** - Latest PHP version with type declarations
+- **MySQL 8.0** - Relational database for data persistence
+- **Laravel Modules** - Modular application structure
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Frontend
+- **Bootstrap 5** - Responsive CSS framework
+- **AdminLTE 4** - Admin dashboard template
+- **jQuery & Alpine.js** - JavaScript frameworks
+- **Vite** - Modern build tool for assets
+- **SASS** - CSS preprocessor
 
-## Laravel Sponsors
+### Development Tools
+- **Docker & Docker Compose** - Containerized development
+- **Nginx** - Web server
+- **MailHog** - Email testing
+- **PHPUnit** - Testing framework
+- **Laravel Pint** - Code formatting
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 📦 Installation
 
-### Premium Partners
+### Prerequisites
+- Docker and Docker Compose
+- Git
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Quick Start with Docker
 
-## Contributing
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd job-app-portal
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2. **Start Docker containers**
+   ```bash
+   docker-compose up -d
+   ```
 
-## Code of Conduct
+3. **Install dependencies and setup**
+   ```bash
+   docker exec laravel_app composer run setup
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. **Access the application**
+   - Main Application: http://localhost:8000
+   - MailHog (Email testing): http://localhost:8025
 
-## Security Vulnerabilities
+### Manual Installation
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. **Install PHP dependencies**
+   ```bash
+   composer install
+   ```
 
-## License
+2. **Install Node.js dependencies**
+   ```bash
+   npm install
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+3. **Environment setup**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+4. **Database setup**
+   ```bash
+   php artisan migrate
+   ```
+
+5. **Build assets**
+   ```bash
+   npm run build
+   ```
+
+6. **Start development server**
+   ```bash
+   php artisan serve
+   ```
+
+## 🏗️ Project Structure
+
+```
+job-app-portal/
+├── Modules/
+│   ├── AdminSite/          # Admin panel module
+│   └── JobsSite/           # Job seekers module
+├── app/
+│   ├── Models/
+│   │   ├── User.php        # User authentication
+│   │   ├── Company.php     # Company profiles
+│   │   ├── Vacancy.php     # Job postings
+│   │   ├── Application.php # Job applications
+│   │   └── Skill.php       # Skills management
+├── database/
+│   └── migrations/         # Database schema
+├── public/
+│   ├── adminlte/          # Admin theme assets
+│   └── usertheme/         # User theme assets
+├── docker/                # Docker configuration
+└── resources/             # Views and assets
+```
+
+## 🗄️ Database Schema
+
+### Core Models
+- **Users** - Authentication and user profiles
+- **Companies** - Employer information and branding
+- **Vacancies** - Job postings with requirements
+- **Applications** - Job applications with status tracking
+- **Skills** - Skill categories and requirements
+- **VacancySkill** - Many-to-many relationship for job skills
+
+### Key Relationships
+- Users can have many Applications
+- Companies can have many Vacancies
+- Vacancies can have many Applications
+- Vacancies belong to many Skills
+
+## 🎨 UI/UX Features
+
+### User Interface
+- Clean, modern design with intuitive navigation
+- Responsive layout for desktop and mobile devices
+- Professional job listing cards with company branding
+- Advanced search and filtering capabilities
+
+### Admin Interface
+- AdminLTE dashboard with comprehensive management tools
+- DataTables for efficient data browsing and management
+- Form validation and user feedback
+- File upload for company logos and user resumes
+
+## 🔧 Development Features
+
+### Code Quality
+- PSR-4 autoloading standards
+- Eloquent ORM for database interactions
+- Form request validation
+- Proper error handling and logging
+
+### Testing
+- PHPUnit test suite setup
+- Feature and unit test examples
+- Test database configuration
+
+### Performance
+- Vite for optimized asset bundling
+- Database indexing for search performance
+- Eager loading to prevent N+1 queries
+
+## 🚀 Deployment
+
+The application is containerized and ready for deployment with:
+- Docker production configuration
+- Environment variable management
+- Asset optimization for production
+- Database migration scripts
+
+## 📝 License
+
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## 👨‍💻 Developer
+
+Created as a portfolio project demonstrating full-stack Laravel development skills, including:
+- Modern PHP development with Laravel
+- Modular application architecture
+- Database design and relationships
+- Frontend integration with modern tools
+- Docker containerization
+- Professional UI/UX implementation
+
+---
+
+*This project showcases proficiency in Laravel development, modern web technologies, and professional software development practices.*
