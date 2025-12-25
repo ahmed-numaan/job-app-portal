@@ -27,6 +27,10 @@ A comprehensive job portal application built with Laravel 12, featuring separate
 - **Email Integration** - MailHog for development email testing
 
 ## 🛠️ Tech Stack
+![Laravel](https://img.shields.io/badge/Laravel-red?logo=laravel)
+![PHP](https://img.shields.io/badge/PHP-8.2-blue?logo=php)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?logo=mysql)
+![Docker](https://img.shields.io/badge/Docker-blue?logo=docker)
 
 ### Backend
 - **Laravel 12** - PHP framework with modern features
