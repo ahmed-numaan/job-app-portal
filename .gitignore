@@ -22,3 +22,9 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Ignore all HTML files in AdminLTE
+/public/adminlte/**/*.html
+
+# Ignore all HTML files in User Theme
+/public/usertheme/**/*.html
